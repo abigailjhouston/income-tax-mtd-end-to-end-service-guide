@@ -12,14 +12,14 @@ jobs:
     steps:
       - name: make checkout folder for source
         run: |
-           mkdir src && cd src
-           cd ..
+           mkdir src && cd src           
         
       - name: Checkout source
         uses: actions/checkout@v2
         
       - name: make checkout folder for destination
         run: |
+           cd ..
            mkdir dest && cd dest
            git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git
                       
