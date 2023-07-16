@@ -22,14 +22,12 @@ jobs:
         run: |
            mkdir dest && cd dest
            git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git
-           cd ..
                       
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          cd src
-          cp -avr /build/ ../dest/
+          cp -avr ../src/income-tax-mtd-end-to-end-service-guide/build .
           git add .
           git commit -m "Deploy to GitHub Pages"
           git push
