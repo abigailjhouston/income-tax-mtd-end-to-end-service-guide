@@ -18,9 +18,13 @@ jobs:
            mkdir dest && cd dest
            git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git   
       - name: copy and commit
-        run: |
+        run: |         
            cp -r src/income-tax-mtd-end-to-end-service-guide/build/  dest/
+      - name: Commit
+        run: |
            cd dest
+           git config user.name "Github.Action"
+           git config user.email "abigail.houston@gmail.com"
            git add .
            git commit -m "Deploy to GitHub Pages"
-           git push
+           git push https://${{ secrets.PAT }}@github.com/abigailjhouston/abigailjhouston.github.io.git
