@@ -17,13 +17,17 @@ jobs:
         uses: actions/checkout@v2
         
       - name: make checkout folder for destination
-        run: mkdir dest && cd dest && git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git
+        run: |
+           mkdir dest && cd dest
+           git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git
+           cd ..
                       
       - name: Commit and push changes
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          cp -avr ~.src/build .
+          cd src
+          cp -avr /build/ ../dest/
           git add .
           git commit -m "Deploy to GitHub Pages"
           git push
