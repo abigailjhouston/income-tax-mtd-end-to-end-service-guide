@@ -23,6 +23,7 @@ jobs:
       - name: Commit
         run: |
            cd dest
+           ls
            git config user.name "Github.Action"
            git config user.email "abigail.houston@gmail.com"
            git add .
