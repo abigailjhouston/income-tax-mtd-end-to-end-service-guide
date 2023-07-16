@@ -18,7 +18,7 @@ jobs:
            git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git   
       - name: copy and commit
         run: |         
-           cp -r src/income-tax-mtd-end-to-end-service-guide/build/  dest/abigailjhouston.github.io/
+           cp -r src/income-tax-mtd-end-to-end-service-guide/build/*  dest/abigailjhouston.github.io/
       - name: Commit
         run: |
            cd dest/abigailjhouston.github.io
