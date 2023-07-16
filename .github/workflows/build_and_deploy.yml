@@ -1,0 +1,27 @@
+name: Buld files
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Setup node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '18'
+      - name: Install node dependencies
+        run: npm ci
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+          bundler-cache: true
+      - name: Install ruby dependencies
+        run: bundle install
+      - name: Build static site
+        run: bundle exec middleman build 
