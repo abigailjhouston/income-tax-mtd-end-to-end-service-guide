@@ -20,6 +20,7 @@ jobs:
       - name: make checkout folder for destination
         run: |
            cd ..
+           ls
            mkdir dest && cd dest
            git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git
                       
@@ -27,8 +28,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          ls
-          ls ../src
+          ls ../         
           cp -r ../src/income-tax-mtd-end-to-end-service-guide/build .
           git add .
           git commit -m "Deploy to GitHub Pages"
