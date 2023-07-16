@@ -27,7 +27,9 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          cp -avr /src/income-tax-mtd-end-to-end-service-guide/build .
+          ls
+          ls ../src
+          cp -r ../src/income-tax-mtd-end-to-end-service-guide/build .
           git add .
           git commit -m "Deploy to GitHub Pages"
           git push
