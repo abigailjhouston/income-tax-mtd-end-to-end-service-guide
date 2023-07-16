@@ -1,19 +1,29 @@
-name: Copy files to another repository
-on: push
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  copy-file:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Pushes test folder
-      uses: datalbry/copy_folder_to_another_repo_action@1.0.0
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.PAT }}
-      with:
-        source_folder: 'build'
-        destination_repo: 'abigailjhouston.github.io'
-        destination_folder: '/'
-        user_email: 'abigail.houston@gmail.com'
-        user_name: 'abigailjhouston'
-        commit_msg: 'Updated build'
+      - name: make checkout folder for source
+        run: mkdir src && cd src
+        
+      - name: Checkout source
+        uses: actions/checkout@v2
+        
+      - name: make checkout folder for destination
+        run: mkdir dest && cd dest && git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git
+                      
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          cp -avr ~.src/build .
+          git add .
+          git commit -m "Deploy to GitHub Pages"
+          git push
