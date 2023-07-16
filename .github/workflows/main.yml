@@ -11,7 +11,9 @@ jobs:
 
     steps:
       - name: make checkout folder for source
-        run: mkdir src && cd src
+        run: |
+           mkdir src && cd src
+           cd ..
         
       - name: Checkout source
         uses: actions/checkout@v2
