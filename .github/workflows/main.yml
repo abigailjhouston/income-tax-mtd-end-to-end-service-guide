@@ -16,9 +16,7 @@ jobs:
            git clone https://github.com/abigailjhouston/income-tax-mtd-end-to-end-service-guide/
            cd ..
            mkdir dest && cd dest
-           git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git
-           git config --local user.email "action@github.com"
-           git config --local user.name "GitHub Action"                 
+           git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git              
            cp -r ../src/income-tax-mtd-end-to-end-service-guide/build .
            git add .
            git commit -m "Deploy to GitHub Pages"
