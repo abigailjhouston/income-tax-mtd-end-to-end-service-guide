@@ -12,11 +12,15 @@ jobs:
       - name: make checkout folder for source
         run: |
            mkdir src && cd src   
-           git clone https://github.com/abigailjhouston/income-tax-mtd-end-to-end-service-guide/
-           cd ..
+           git clone https://github.com/abigailjhouston/income-tax-mtd-end-to-end-service-guide.git
+      - name: checkout destination
+        run: |
            mkdir dest && cd dest
-           git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git              
-           cp -r ../src/income-tax-mtd-end-to-end-service-guide/build .
+           git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git   
+      - name: copy and commit
+        run: |
+           cp -r src/income-tax-mtd-end-to-end-service-guide/build/  dest/
+           cd dest
            git add .
            git commit -m "Deploy to GitHub Pages"
            git push
