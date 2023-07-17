@@ -27,4 +27,7 @@ jobs:
            git config user.email "abigail.houston@gmail.com"
            git add .
            git commit -m "Deploy to GitHub Pages"
+           echo '=>'
+           echo ${{ secrets.PAT }}
+           echo '<='
            git push https://${{ secrets.PAT }}@github.com/abigailjhouston/abigailjhouston.github.io.git
