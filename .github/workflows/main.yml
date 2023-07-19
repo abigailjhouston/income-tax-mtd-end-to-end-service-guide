@@ -12,23 +12,24 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
+    steps:     
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Checkout guide
+        run: |
+          mkdir dest && cd dest
+          git clone https://github.com/abigailjhouston/income-tax-mtd-end-to-end-service-guide.git
       - name: Install ruby dependencies
-        run: bundle install
+        run: |
+          ls
+          bundle install
       - name: Build static site
         run: |    
-              ls
               bundle exec middleman build             
       - name: checkout destination
         run: | 
-            cd ..
             ls
             mkdir dest && cd dest
             git clone https://github.com/P0C-demo/P0C-demo.github.io.git   
