@@ -24,7 +24,7 @@ jobs:
              git clone https://github.com/abigailjhouston/income-tax-mtd-end-to-end-service-guide.git
       - name: Install ruby dependencies
         run: |
-          cd src
+          cd src/income-tax-mtd-end-to-end-service-guide
           bundle install
       - name: Build static site
         run: | 
