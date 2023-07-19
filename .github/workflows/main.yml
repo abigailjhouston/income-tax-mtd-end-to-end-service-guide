@@ -39,7 +39,7 @@ jobs:
              cp -r src/income-tax-mtd-end-to-end-service-guide/build/* dest/abigailjhouston.github.io/       
       - name: Commit
         run: | 
-             cd dest/P0C-demo-github.io     
+             cd dest/abigailjhouston.github.io     
              git config user.name "Github.Action"
              git config user.email "deliverablestangible@gmail.com"
              git add .
