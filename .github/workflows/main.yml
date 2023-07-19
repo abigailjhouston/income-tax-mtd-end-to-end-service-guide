@@ -33,10 +33,9 @@ jobs:
       - name: checkout destination
         run: | 
              mkdir dest && cd dest
-             git clone https://github.com/P0C-demo/P0C-demo.github.io.git   
-      - name: Retrieve cached files
+             git clone https://github.com/abigailjhouston/abigailjhouston.github.io.git   
+      - name: Retrieve markup files
         run: |
-             ls
              cp -r src/income-tax-mtd-end-to-end-service-guide/build/* dest/abigailjhouston.github.io/       
       - name: Commit
         run: | 
@@ -44,8 +43,5 @@ jobs:
              git config user.name "Github.Action"
              git config user.email "deliverablestangible@gmail.com"
              git add .
-             git commit -m "Deploy to GitHub Pages"
-             echo '=>'
-             echo ${{ secrets.PAT }}
-             echo '<='
-             git push https://${{ secrets.PAT }}@github.com/P0C-demo/P0C-demo.github.io.git
+             git commit -m "Deploy to GitHub Pages"            
+             git push https://${{ secrets.PAT }}@github.com/abigailjhouston/abigailjhouston.github.io.git
