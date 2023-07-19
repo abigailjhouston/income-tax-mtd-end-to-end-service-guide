@@ -20,24 +20,24 @@ jobs:
           bundler-cache: true
       - name: Checkout guide
         run: |
-          mkdir dest && cd dest
-          git clone https://github.com/abigailjhouston/income-tax-mtd-end-to-end-service-guide.git
+             mkdir src && cd src
+             git clone https://github.com/abigailjhouston/income-tax-mtd-end-to-end-service-guide.git
       - name: Install ruby dependencies
         run: |
-          cd dest
+          cd src
           bundle install
       - name: Build static site
         run: | 
-              cd dest
-              bundle exec middleman build             
+             cd src/income-tax-mtd-end-to-end-service-guide
+             bundle exec middleman build             
       - name: checkout destination
         run: | 
-            mkdir dest && cd dest
-            git clone https://github.com/P0C-demo/P0C-demo.github.io.git   
+             mkdir dest && cd dest
+             git clone https://github.com/P0C-demo/P0C-demo.github.io.git   
       - name: Retrieve cached files
         run: |
-              ls
-              cp -r src/income-tax-mtd-end-to-end-service-guide/build/* dest/abigailjhouston.github.io/       
+             ls
+             cp -r src/income-tax-mtd-end-to-end-service-guide/build/* dest/abigailjhouston.github.io/       
       - name: Commit
         run: | 
              cd dest/P0C-demo-github.io     
