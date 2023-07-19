@@ -23,16 +23,18 @@ jobs:
       - name: Install ruby dependencies
         run: bundle install
       - name: Build static site
-        run: |              
+        run: |    
+              ls
               bundle exec middleman build             
       - name: checkout destination
         run: | 
             cd ..
+            ls
             mkdir dest && cd dest
             git clone https://github.com/P0C-demo/P0C-demo.github.io.git   
       - name: Retrieve cached files
         run: |
-              cd ..
+              ls
               cp -r src/income-tax-mtd-end-to-end-service-guide/build/* dest/abigailjhouston.github.io/       
       - name: Commit
         run: | 
