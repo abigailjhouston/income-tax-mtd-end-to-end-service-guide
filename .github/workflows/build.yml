@@ -25,29 +25,28 @@ jobs:
         run: bundle install
       - name: Build static site
         run: bundle exec middleman build  
-      - name: Check in
-        uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Cache
+        uses: actions/cache@v2
         with:
-          commit-message: Automated commit
-          branch: main          
+          path: ~/income-tax-mtd-end-to-end-service-guide/build/**
+          key: ${{ runner.os }}-files-${{ hashFiles('~/income-tax-mtd-end-to-end-service-guide/build/**') }}       
           
   Deploy_the_markup_files:
     needs: Build_the_markup_files
     runs-on: ubuntu-latest
-    steps:
-       - name: make checkout folder for source
-         run: |
-             mkdir src && cd src   
-             git clone https://github.com/P0C-demo/income-tax-mtd-end-to-end-service-guide.git
+    steps:       
        - name: checkout destination
          run: |
              mkdir dest && cd dest
              git clone https://github.com/P0C-demo/P0C-demo.github.io.git   
-       - name: copy and commit
-         run: |         
-             cp -r src/income-tax-mtd-end-to-end-service-guide/build/*  dest/P0C-demo.github.io/
+       - name: Retrieve from cache
+         uses: actions/cache@v2
+         with:
+            path: ~/income-tax-mtd-end-to-end-service-guide/build/**
+            key: ${{ runner.os }}-files-${{ hashFiles('~/income-tax-mtd-end-to-end-service-guide/build/**') }}  
        - name: Commit
          run: |
+             ls
              cd dest/P0C-demo.github.io
              ls
              git config user.name "Github.Action"
