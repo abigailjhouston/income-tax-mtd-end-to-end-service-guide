@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'source'
-
 jobs:
   Build_the_markup_files:
     runs-on: ubuntu-latest
@@ -42,5 +39,7 @@ jobs:
              git config user.name "Github.Action"
              git config user.email "deliverablestangible@gmail.com"
              git add .
+             if [[ `git status` ]]; then 
              git commit -m "Deploy to GitHub Pages"            
              git push https://${{ secrets.PAT }}@github.com/abigailjhouston/abigailjhouston.github.io.git
+             fi 
