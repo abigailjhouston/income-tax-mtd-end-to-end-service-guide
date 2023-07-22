@@ -39,7 +39,7 @@ jobs:
              git config user.name "Github.Action"
              git config user.email "deliverablestangible@gmail.com"
              git add .
-             if [[ `git status` ]]; then 
-             git commit -m "Deploy to GitHub Pages"            
+             git commit -m "Deploy to GitHub Pages"   
+             if git diff-index --quiet HEAD --; then
              git push https://${{ secrets.PAT }}@github.com/abigailjhouston/abigailjhouston.github.io.git
              fi 
