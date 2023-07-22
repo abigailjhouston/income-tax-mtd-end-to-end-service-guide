@@ -38,9 +38,8 @@ jobs:
              cd dest/abigailjhouston.github.io     
              git config user.name "Github.Action"
              git config user.email "deliverablestangible@gmail.com"
-             if git diff --quiet --ignore-submodules HEAD; then
-             git add .
+             if[[ -z $(git status -s) ]]; then
+             git add .             
              git commit -m "Deploy to GitHub Pages"   
-             if git diff-index --quiet HEAD --; then
              git push https://${{ secrets.PAT }}@github.com/abigailjhouston/abigailjhouston.github.io.git
-             fi 
+             fi
