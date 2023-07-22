@@ -38,6 +38,7 @@ jobs:
              cd dest/abigailjhouston.github.io     
              git config user.name "Github.Action"
              git config user.email "deliverablestangible@gmail.com"
+             if git diff --quiet --ignore-submodules HEAD; then
              git add .
              git commit -m "Deploy to GitHub Pages"   
              if git diff-index --quiet HEAD --; then
